@@ -14,7 +14,7 @@
     "macExecutableFilename": "",
     "orientation": "landscape",
     "packageName": "com.example.gamename",
-    "projectFile": "C:\\Users\\pablod\\Documents\\GDevelop projects\\Garden\\game.json",
+    "projectFile": "C:\\Users\\pablod\\Documents\\GitHub\\GardenOfEden\\game.json",
     "scaleMode": "linear",
     "sizeOnStartupMode": "adaptWidth",
     "useExternalSourceFiles": false,
@@ -289,6 +289,15 @@
         "name": "Wave-1-0.png",
         "smoothed": true,
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "Wave-1-1.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Wave-1-1.png",
+        "smoothed": true,
+        "userAdded": true
       }
     ],
     "resourceFolders": []
@@ -303,6 +312,10 @@
     {
       "name": "Season",
       "value": "1"
+    },
+    {
+      "name": "EndNivel",
+      "value": "0"
     }
   ],
   "layouts": [
@@ -342,7 +355,12 @@
           ]
         }
       ],
-      "variables": [],
+      "variables": [
+        {
+          "name": "ActualWave",
+          "value": ""
+        }
+      ],
       "instances": [
         {
           "angle": 0,
@@ -455,138 +473,6 @@
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "layer": "",
-          "locked": false,
-          "name": "Ant",
-          "persistentUuid": "c6fdfb53-31b6-415b-8481-93a6a0dc1b43",
-          "width": 0,
-          "x": -108,
-          "y": 515,
-          "zOrder": 14,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": [
-            {
-              "name": "Speed",
-              "value": "50"
-            },
-            {
-              "name": "MaxSpeed",
-              "value": "50"
-            },
-            {
-              "name": "Target",
-              "value": "1"
-            },
-            {
-              "name": "Move",
-              "value": "1"
-            }
-          ]
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "layer": "",
-          "locked": false,
-          "name": "Ant",
-          "persistentUuid": "f32002e1-4eb3-47af-9cca-3fc16cdb95e2",
-          "width": 0,
-          "x": -215,
-          "y": 512,
-          "zOrder": 14,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": [
-            {
-              "name": "Speed",
-              "value": "50"
-            },
-            {
-              "name": "MaxSpeed",
-              "value": "70"
-            },
-            {
-              "name": "Target",
-              "value": "1"
-            },
-            {
-              "name": "Move",
-              "value": "1"
-            }
-          ]
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "layer": "",
-          "locked": false,
-          "name": "Ant",
-          "persistentUuid": "acfa9005-fd3f-4a10-91d5-873b2f9f55b3",
-          "width": 0,
-          "x": 1371,
-          "y": 517,
-          "zOrder": 14,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": [
-            {
-              "name": "Speed",
-              "value": "50"
-            },
-            {
-              "name": "MaxSpeed",
-              "value": "60"
-            },
-            {
-              "name": "Target",
-              "value": "1"
-            },
-            {
-              "name": "Move",
-              "value": "1"
-            }
-          ]
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "layer": "",
-          "locked": false,
-          "name": "Ant",
-          "persistentUuid": "f8320db6-db89-452e-aa4f-95ddc047a936",
-          "width": 0,
-          "x": 1352,
-          "y": 514,
-          "zOrder": 14,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": [
-            {
-              "name": "Speed",
-              "value": "50"
-            },
-            {
-              "name": "MaxSpeed",
-              "value": "80"
-            },
-            {
-              "name": "Target",
-              "value": "1"
-            },
-            {
-              "name": "Move",
-              "value": "1"
-            }
-          ]
         },
         {
           "angle": 0,
@@ -941,7 +827,16 @@
           "tags": "",
           "type": "Sprite",
           "updateIfNotVisible": false,
-          "variables": [],
+          "variables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Damage",
+              "value": "20"
+            }
+          ],
           "behaviors": [],
           "animations": [
             {
@@ -1031,6 +926,10 @@
             {
               "name": "ID",
               "value": ""
+            },
+            {
+              "name": "Lives",
+              "value": "100"
             }
           ],
           "behaviors": [],
@@ -1149,10 +1048,31 @@
             {
               "name": "NeedConfiguration",
               "value": "1"
+            },
+            {
+              "name": "Lives",
+              "value": "35"
+            },
+            {
+              "name": "HitReceived",
+              "value": ""
+            },
+            {
+              "name": "Damage",
+              "value": "2"
+            },
+            {
+              "name": "TimerDamage",
+              "value": "0.5"
+            },
+            {
+              "name": "ApplyDamage",
+              "value": "0"
             }
           ],
           "behaviors": [
             {
+              "jumpSpeed": 300,
               "name": "PlatformerObject",
               "type": "PlatformBehavior::PlatformerObjectBehavior",
               "acceleration": 1500,
@@ -1160,7 +1080,6 @@
               "deceleration": 1500,
               "gravity": 1000,
               "ignoreDefaultControls": true,
-              "jumpSpeed": 600,
               "jumpSustainTime": 0.2,
               "ladderClimbingSpeed": 150,
               "maxFallingSpeed": 700,
@@ -1254,6 +1173,30 @@
             {
               "name": "Quantity",
               "value": ""
+            },
+            {
+              "name": "SpaceBetween",
+              "value": ""
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": ""
+            },
+            {
+              "name": "GenerateWave",
+              "value": ""
+            },
+            {
+              "name": "Nivel",
+              "value": ""
+            },
+            {
+              "name": "Wave",
+              "value": ""
+            },
+            {
+              "name": "InitialPosition",
+              "value": ""
             }
           ],
           "behaviors": [],
@@ -1268,7 +1211,7 @@
                   "sprites": [
                     {
                       "hasCustomCollisionMask": false,
-                      "image": "Wave-1-0.png",
+                      "image": "Wave-1-1.png",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -1288,6 +1231,44 @@
               ]
             }
           ]
+        },
+        {
+          "bold": false,
+          "italic": false,
+          "name": "EnemyLive",
+          "smoothed": true,
+          "tags": "",
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "behaviors": [],
+          "string": "",
+          "font": "",
+          "characterSize": 20,
+          "color": {
+            "b": 15,
+            "g": 15,
+            "r": 245
+          }
+        },
+        {
+          "bold": false,
+          "italic": false,
+          "name": "FlowerLive",
+          "smoothed": true,
+          "tags": "",
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "behaviors": [],
+          "string": "100",
+          "font": "",
+          "characterSize": 20,
+          "color": {
+            "b": 28,
+            "g": 231,
+            "r": 248
+          }
         }
       ],
       "events": [
@@ -1323,29 +1304,60 @@
         {
           "disabled": false,
           "folded": false,
-          "type": "BuiltinCommonInstructions::Link",
-          "include": {
-            "includeConfig": 0
-          },
-          "target": "NivelManagement"
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Link",
-          "include": {
-            "includeConfig": 0
-          },
-          "target": "Enemy"
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Link",
-          "include": {
-            "includeConfig": 0
-          },
-          "target": "Player"
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarGlobal"
+              },
+              "parameters": [
+                "EndNivel",
+                "=",
+                "0"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Link",
+              "include": {
+                "includeConfig": 0
+              },
+              "target": "NivelManagement"
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Link",
+              "include": {
+                "includeConfig": 0
+              },
+              "target": "Enemy"
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Link",
+              "include": {
+                "includeConfig": 0
+              },
+              "target": "Player"
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Link",
+              "include": {
+                "includeConfig": 0
+              },
+              "target": "FlowerManagement"
+            }
+          ]
         },
         {
           "colorB": 228,
@@ -1629,14 +1641,6 @@
           "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [],
-          "actions": [],
-          "events": []
-        },
-        {
-          "disabled": false,
-          "folded": false,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
           "actions": [
             {
               "type": {
@@ -1689,6 +1693,316 @@
           "type": "PlatformBehavior::PlatformerObjectBehavior"
         }
       ]
+    },
+    {
+      "b": 209,
+      "disableInputWhenNotFocused": true,
+      "mangledName": "Lose",
+      "name": "Lose",
+      "oglFOV": 90,
+      "oglZFar": 500,
+      "oglZNear": 1,
+      "r": 209,
+      "standardSortMethod": true,
+      "stopSoundsOnStartup": true,
+      "title": "",
+      "v": 209,
+      "uiSettings": {
+        "grid": false,
+        "gridB": 255,
+        "gridG": 180,
+        "gridHeight": 32,
+        "gridOffsetX": 0,
+        "gridOffsetY": 0,
+        "gridR": 158,
+        "gridWidth": 32,
+        "snap": true,
+        "windowMask": false,
+        "zoomFactor": 1
+      },
+      "objectsGroups": [],
+      "variables": [],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "NewObject",
+          "persistentUuid": "e9ef7219-8b7e-43ce-99ff-700d1ece7fc0",
+          "width": 0,
+          "x": 586,
+          "y": 198,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
+      "objects": [
+        {
+          "bold": false,
+          "italic": false,
+          "name": "NewObject",
+          "smoothed": true,
+          "tags": "",
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "behaviors": [],
+          "string": "Lose",
+          "font": "",
+          "characterSize": 20,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          }
+        }
+      ],
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PopEndedTouch"
+                  },
+                  "parameters": [
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "MouseButtonReleased"
+                  },
+                  "parameters": [
+                    "",
+                    "Left"
+                  ],
+                  "subInstructions": []
+                }
+              ]
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": [],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "PushScene"
+              },
+              "parameters": [
+                "",
+                "\"Game\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "layers": [
+        {
+          "name": "",
+          "visibility": true,
+          "cameras": [
+            {
+              "defaultSize": true,
+              "defaultViewport": true,
+              "height": 0,
+              "viewportBottom": 1,
+              "viewportLeft": 0,
+              "viewportRight": 1,
+              "viewportTop": 0,
+              "width": 0
+            }
+          ],
+          "effects": []
+        }
+      ],
+      "behaviorsSharedData": []
+    },
+    {
+      "b": 209,
+      "disableInputWhenNotFocused": true,
+      "mangledName": "Win",
+      "name": "Win",
+      "oglFOV": 90,
+      "oglZFar": 500,
+      "oglZNear": 1,
+      "r": 209,
+      "standardSortMethod": true,
+      "stopSoundsOnStartup": true,
+      "title": "",
+      "v": 209,
+      "uiSettings": {
+        "grid": false,
+        "gridB": 255,
+        "gridG": 180,
+        "gridHeight": 32,
+        "gridOffsetX": 0,
+        "gridOffsetY": 0,
+        "gridR": 158,
+        "gridWidth": 32,
+        "snap": true,
+        "windowMask": false,
+        "zoomFactor": 1
+      },
+      "objectsGroups": [],
+      "variables": [],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "NewObject",
+          "persistentUuid": "77ddc551-25bd-4ab9-993e-1f32b5149885",
+          "width": 0,
+          "x": 548,
+          "y": 211,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
+      "objects": [
+        {
+          "bold": false,
+          "italic": false,
+          "name": "NewObject",
+          "smoothed": true,
+          "tags": "",
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "behaviors": [],
+          "string": "Win",
+          "font": "",
+          "characterSize": 20,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          }
+        }
+      ],
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "MouseButtonReleased"
+                  },
+                  "parameters": [
+                    "",
+                    "Left"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PopEndedTouch"
+                  },
+                  "parameters": [
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ]
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": [],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobal"
+              },
+              "parameters": [
+                "Nivel",
+                "+",
+                "1"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "PushScene"
+              },
+              "parameters": [
+                "",
+                "\"Game\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        }
+      ],
+      "layers": [
+        {
+          "name": "",
+          "visibility": true,
+          "cameras": [
+            {
+              "defaultSize": true,
+              "defaultViewport": true,
+              "height": 0,
+              "viewportBottom": 1,
+              "viewportLeft": 0,
+              "viewportRight": 1,
+              "viewportTop": 0,
+              "width": 0
+            }
+          ],
+          "effects": []
+        }
+      ],
+      "behaviorsSharedData": []
     }
   ],
   "externalEvents": [
@@ -1703,7 +2017,7 @@
           "colorR": 74,
           "creationTime": 0,
           "disabled": false,
-          "folded": false,
+          "folded": true,
           "name": "Move",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -1933,6 +2247,81 @@
                 }
               ],
               "events": []
+            },
+            {
+              "colorB": 228,
+              "colorG": 176,
+              "colorR": 74,
+              "creationTime": 0,
+              "disabled": false,
+              "folded": false,
+              "name": "Controls",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [],
+              "parameters": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "SystemInfo::IsMobile"
+                  },
+                  "parameters": [],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Left",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Right",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Jump",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Shoot",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ],
           "parameters": []
@@ -2007,6 +2396,32 @@
                     "Player.PointX(\"Shoot\")",
                     "Player.PointY(\"Shoot\")",
                     ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Bullet",
+                    "Type",
+                    "=",
+                    "1"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Bullet",
+                    "Damage",
+                    "=",
+                    "20"
                   ],
                   "subInstructions": []
                 }
@@ -2137,7 +2552,7 @@
           "events": [
             {
               "disabled": false,
-              "folded": false,
+              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -2157,79 +2572,6 @@
               "events": [
                 {
                   "disabled": false,
-                  "folded": true,
-                  "type": "BuiltinCommonInstructions::ForEach",
-                  "object": "Ant",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "VarObjet"
-                      },
-                      "parameters": [
-                        "Enemy",
-                        "Move",
-                        "=",
-                        "1"
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "LinkedObjects::PickObjectsLinkedTo"
-                      },
-                      "parameters": [
-                        "",
-                        "Flower",
-                        "Enemy"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [],
-                  "events": [
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "CollisionNP"
-                          },
-                          "parameters": [
-                            "Enemy",
-                            "Flower",
-                            "",
-                            "",
-                            ""
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjet"
-                          },
-                          "parameters": [
-                            "Enemy",
-                            "Move",
-                            "=",
-                            "0"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    }
-                  ]
-                },
-                {
-                  "disabled": false,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [],
@@ -2242,6 +2584,103 @@
                       "parameters": [
                         "",
                         "\"CollisionTimer\""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Enemy",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarObjet"
+                  },
+                  "parameters": [
+                    "Enemy",
+                    "Move",
+                    "=",
+                    "1"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PlatformBehavior::IsOnFloor"
+                  },
+                  "parameters": [
+                    "Enemy",
+                    "PlatformerObject"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "LinkedObjects::PickObjectsLinkedTo"
+                  },
+                  "parameters": [
+                    "",
+                    "Flower",
+                    "Enemy"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "CollisionNP"
+                      },
+                      "parameters": [
+                        "Enemy",
+                        "Flower",
+                        "",
+                        "",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjet"
+                      },
+                      "parameters": [
+                        "Enemy",
+                        "Move",
+                        "=",
+                        "0"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjet"
+                      },
+                      "parameters": [
+                        "Enemy",
+                        "ApplyDamage",
+                        "=",
+                        "1"
                       ],
                       "subInstructions": []
                     }
@@ -2266,7 +2705,7 @@
           "events": [
             {
               "disabled": false,
-              "folded": false,
+              "folded": true,
               "type": "BuiltinCommonInstructions::ForEach",
               "object": "Enemy",
               "conditions": [
@@ -2432,6 +2871,561 @@
             }
           ],
           "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "disabled": false,
+          "folded": true,
+          "name": "Damage Enemy",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "disabled": false,
+              "folded": true,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "CollisionNP"
+                  },
+                  "parameters": [
+                    "Bullet",
+                    "Enemy",
+                    "",
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": [],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Bullet",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::ForEach",
+                  "object": "Enemy",
+                  "conditions": [],
+                  "actions": [],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjet"
+                          },
+                          "parameters": [
+                            "Enemy",
+                            "Lives",
+                            "-",
+                            "Bullet.Variable(Damage)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarObjet"
+                          },
+                          "parameters": [
+                            "Enemy",
+                            "Lives",
+                            ">",
+                            "0"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarObjet"
+                          },
+                          "parameters": [
+                            "Enemy",
+                            "Action",
+                            "=",
+                            "RandomInRange(0 , 1)"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "VarObjet"
+                              },
+                              "parameters": [
+                                "Enemy",
+                                "Action",
+                                "=",
+                                "0"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 109,
+                            "g": 230,
+                            "r": 255,
+                            "textB": 0,
+                            "textG": 0,
+                            "textR": 0
+                          },
+                          "comment": "Retrocede unos pasos",
+                          "comment2": ""
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "VarObjet"
+                              },
+                              "parameters": [
+                                "Enemy",
+                                "Action",
+                                "=",
+                                "1"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "PlatformBehavior::SimulateJumpKey"
+                              },
+                              "parameters": [
+                                "Enemy",
+                                "PlatformerObject"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "PlatformBehavior::MaxSpeed"
+                              },
+                              "parameters": [
+                                "Enemy",
+                                "PlatformerObject",
+                                "=",
+                                "Enemy.PlatformerObject::MaxSpeed() * 2"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarObjet"
+                              },
+                              "parameters": [
+                                "Enemy",
+                                "ApplyDamage",
+                                "=",
+                                "0"
+                              ],
+                              "subInstructions": []
+                            },
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarObjet"
+                              },
+                              "parameters": [
+                                "Enemy",
+                                "Move",
+                                "=",
+                                "1"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarObjet"
+                          },
+                          "parameters": [
+                            "Enemy",
+                            "Lives",
+                            "<=",
+                            "0"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "LinkedObjects::PickObjectsLinkedTo"
+                              },
+                              "parameters": [
+                                "",
+                                "EnemyLive",
+                                "Enemy"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Delete"
+                              },
+                              "parameters": [
+                                "EnemyLive",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Delete"
+                              },
+                              "parameters": [
+                                "Enemy",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": true,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PlatformBehavior::IsJumping"
+                  },
+                  "parameters": [
+                    "Enemy",
+                    "PlatformerObject"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PosX"
+                      },
+                      "parameters": [
+                        "Enemy",
+                        "<=",
+                        "Player.X()"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreX"
+                      },
+                      "parameters": [
+                        "Enemy",
+                        "=",
+                        "Enemy.X() - (TimeDelta() * 350)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PosX"
+                      },
+                      "parameters": [
+                        "Enemy",
+                        ">",
+                        "Player.X()"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreX"
+                      },
+                      "parameters": [
+                        "Enemy",
+                        "=",
+                        "Enemy.X() + (TimeDelta() * 350)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "disabled": false,
+          "folded": false,
+          "name": "Damage Flower",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarObjet"
+                  },
+                  "parameters": [
+                    "Enemy",
+                    "ApplyDamage",
+                    "=",
+                    "1"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ObjectTimer"
+                  },
+                  "parameters": [
+                    "Enemy",
+                    "\"TimerDamage\"",
+                    "Enemy.Variable(TimerDamage)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ResetObjectTimer"
+                  },
+                  "parameters": [
+                    "Enemy",
+                    "\"TimerDamage\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "LinkedObjects::PickObjectsLinkedTo"
+                      },
+                      "parameters": [
+                        "",
+                        "Flower",
+                        "Enemy"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjet"
+                      },
+                      "parameters": [
+                        "Flower",
+                        "Lives",
+                        "-",
+                        "Enemy.Variable(Damage)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Enemy",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "LinkedObjects::PickObjectsLinkedTo"
+              },
+              "parameters": [
+                "",
+                "EnemyLive",
+                "Enemy"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "TextObject::String"
+              },
+              "parameters": [
+                "EnemyLive",
+                "=",
+                "ToString(trunc(Enemy.Variable(Lives)))"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "MettreAutourPos"
+              },
+              "parameters": [
+                "EnemyLive",
+                "Enemy.PointX(\"Center\")",
+                "Enemy.PointY(\"Center\") - 50",
+                "",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
         }
       ]
     },
@@ -2514,154 +3508,7 @@
                   "subInstructions": []
                 }
               ],
-              "events": [
-                {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "VarGlobal"
-                      },
-                      "parameters": [
-                        "Nivel",
-                        "=",
-                        "1"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
-                  "actions": [],
-                  "events": [
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "Create"
-                          },
-                          "parameters": [
-                            "",
-                            "Wave",
-                            "-300",
-                            "520",
-                            ""
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjet"
-                          },
-                          "parameters": [
-                            "Wave",
-                            "Quantity",
-                            "=",
-                            "5"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjet"
-                          },
-                          "parameters": [
-                            "Wave",
-                            "Type",
-                            "=",
-                            "1"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "AddForceXY"
-                          },
-                          "parameters": [
-                            "Wave",
-                            "50",
-                            "",
-                            "1"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "Create"
-                          },
-                          "parameters": [
-                            "",
-                            "Wave",
-                            "1580",
-                            "520",
-                            ""
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjet"
-                          },
-                          "parameters": [
-                            "Wave",
-                            "Quantity",
-                            "=",
-                            "5"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjet"
-                          },
-                          "parameters": [
-                            "Wave",
-                            "Type",
-                            "=",
-                            "1"
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "AddForceXY"
-                          },
-                          "parameters": [
-                            "Wave",
-                            "-50",
-                            "",
-                            "1"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    }
-                  ]
-                }
-              ]
+              "events": []
             },
             {
               "disabled": false,
@@ -2819,6 +3666,177 @@
                   },
                   "parameters": [
                     "NextLevel"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Wave",
+              "conditions": [],
+              "actions": [],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjet"
+                      },
+                      "parameters": [
+                        "Wave",
+                        "Nivel",
+                        "!=",
+                        "GlobalVariable(Nivel)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Delete"
+                      },
+                      "parameters": [
+                        "Wave",
+                        ""
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjet"
+                      },
+                      "parameters": [
+                        "Wave",
+                        "Nivel",
+                        "=",
+                        "GlobalVariable(Nivel)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "MettreX"
+                      },
+                      "parameters": [
+                        "Wave",
+                        "=",
+                        "Wave.Variable(InitialPosition)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "PosX"
+                          },
+                          "parameters": [
+                            "Wave",
+                            "<",
+                            "0"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "AddForceXY"
+                          },
+                          "parameters": [
+                            "Wave",
+                            "50",
+                            "",
+                            "1"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "PosX"
+                          },
+                          "parameters": [
+                            "Wave",
+                            ">",
+                            "0"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "AddForceXY"
+                          },
+                          "parameters": [
+                            "Wave",
+                            "-50",
+                            "",
+                            "1"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "TextObject::String"
+                  },
+                  "parameters": [
+                    "Text2",
+                    "=",
+                    "\"Season \" + GlobalVariableString(Season) + \" - Nivel \" + GlobalVariableString(Nivel)"
                   ],
                   "subInstructions": []
                 }
@@ -3036,25 +4054,41 @@
           "parameters": []
         },
         {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
           "disabled": false,
           "folded": false,
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Wave",
-          "conditions": [],
-          "actions": [],
+          "name": "Waves",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
           "events": [
             {
               "disabled": false,
               "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Wave",
+              "conditions": [],
+              "actions": [],
+              "events": [
                 {
-                  "type": {
-                    "inverted": false,
-                    "value": "BuiltinCommonInstructions::Or"
-                  },
-                  "parameters": [],
-                  "subInstructions": [
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PosX"
+                      },
+                      "parameters": [
+                        "Wave",
+                        "<",
+                        "0"
+                      ],
+                      "subInstructions": []
+                    },
                     {
                       "type": {
                         "inverted": false,
@@ -3063,7 +4097,42 @@
                       "parameters": [
                         "Wave",
                         ">",
-                        "-200"
+                        "-100"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjet"
+                      },
+                      "parameters": [
+                        "Wave",
+                        "GenerateWave",
+                        "=",
+                        "1"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PosX"
+                      },
+                      "parameters": [
+                        "Wave",
+                        ">",
+                        "0"
                       ],
                       "subInstructions": []
                     },
@@ -3079,97 +4148,258 @@
                       ],
                       "subInstructions": []
                     }
-                  ]
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarObjet"
+                      },
+                      "parameters": [
+                        "Wave",
+                        "GenerateWave",
+                        "=",
+                        "1"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
                 },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": [],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [],
-              "events": [
                 {
                   "disabled": false,
                   "folded": false,
-                  "type": "BuiltinCommonInstructions::Repeat",
-                  "repeatExpression": "Wave.Variable(Quantity)",
-                  "conditions": [],
-                  "actions": [],
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjet"
+                      },
+                      "parameters": [
+                        "Wave",
+                        "GenerateWave",
+                        "=",
+                        "1"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarScene"
+                      },
+                      "parameters": [
+                        "EnemyCount",
+                        "=",
+                        "0"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "TextObject::String"
+                      },
+                      "parameters": [
+                        "Text",
+                        "=",
+                        "\"Wave \" + Wave.VariableString(Wave)"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarScene"
+                      },
+                      "parameters": [
+                        "ActualWave",
+                        "=",
+                        "Wave.Variable(Wave)"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
                   "events": [
                     {
                       "disabled": false,
                       "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "VarObjet"
-                          },
-                          "parameters": [
-                            "Wave",
-                            "Type",
-                            "=",
-                            "1"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "Create"
-                          },
-                          "parameters": [
-                            "",
-                            "Ant",
-                            "RandomInRange(Wave.X() - 100, Wave.X() + 100)",
-                            "Wave.Y()",
-                            ""
-                          ],
-                          "subInstructions": []
-                        },
-                        {
-                          "type": {
-                            "inverted": false,
-                            "value": "ModVarObjet"
-                          },
-                          "parameters": [
-                            "Ant",
-                            "Target",
-                            "=",
-                            "1"
-                          ],
-                          "subInstructions": []
-                        }
-                      ],
-                      "events": []
-                    },
-                    {
-                      "disabled": false,
-                      "folded": false,
-                      "type": "BuiltinCommonInstructions::Standard",
+                      "type": "BuiltinCommonInstructions::Repeat",
+                      "repeatExpression": "Wave.Variable(Quantity)",
                       "conditions": [],
                       "actions": [
                         {
                           "type": {
                             "inverted": false,
-                            "value": "Enemy::CreateAnt"
+                            "value": "ModVarScene"
                           },
                           "parameters": [
-                            "",
-                            "Ant",
-                            ""
+                            "Contador",
+                            "+",
+                            "1"
                           ],
                           "subInstructions": []
                         }
                       ],
-                      "events": []
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 109,
+                            "g": 230,
+                            "r": 255,
+                            "textB": 0,
+                            "textG": 0,
+                            "textR": 0
+                          },
+                          "comment": "Vienen desde la izquierda",
+                          "comment2": ""
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "PosX"
+                              },
+                              "parameters": [
+                                "Wave",
+                                "<",
+                                "0"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "PositionX",
+                                "=",
+                                "Wave.X() - (Wave.Variable(SpaceBetween) * Variable(EnemyCount)) + RandomInRange(-Wave.Variable(RandomSpaceBetween), Wave.Variable(RandomSpaceBetween))"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 109,
+                            "g": 230,
+                            "r": 255,
+                            "textB": 0,
+                            "textG": 0,
+                            "textR": 0
+                          },
+                          "comment": "Vienen de la derecha",
+                          "comment2": ""
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "PosX"
+                              },
+                              "parameters": [
+                                "Wave",
+                                ">",
+                                "0"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "PositionX",
+                                "=",
+                                "Wave.X() + (Wave.Variable(SpaceBetween) * Variable(EnemyCount)) - RandomInRange(-Wave.Variable(RandomSpaceBetween), Wave.Variable(RandomSpaceBetween))"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "VarObjet"
+                              },
+                              "parameters": [
+                                "Wave",
+                                "Type",
+                                "=",
+                                "1"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "Enemy::CreateAnt"
+                              },
+                              "parameters": [
+                                "",
+                                "Ant",
+                                ""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        },
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "ModVarScene"
+                              },
+                              "parameters": [
+                                "EnemyCount",
+                                "+",
+                                "1"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
                     },
                     {
                       "disabled": false,
@@ -3198,7 +4428,7 @@
                             "Enemy",
                             "PlatformerObject",
                             "Flower",
-                            ""
+                            "EnemyLive"
                           ],
                           "subInstructions": []
                         }
@@ -3209,7 +4439,248 @@
                 }
               ]
             }
-          ]
+          ],
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "disabled": false,
+          "folded": false,
+          "name": "Win-Lose",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Timer"
+                  },
+                  "parameters": [
+                    "",
+                    "0.2",
+                    "\"WinLoseTimer\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ResetTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"WinLoseTimer\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "Lose",
+                    "=",
+                    "1"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": [
+                {
+                  "colorB": 228,
+                  "colorG": 176,
+                  "colorR": 74,
+                  "creationTime": 0,
+                  "disabled": false,
+                  "folded": false,
+                  "name": "Lose",
+                  "source": "",
+                  "type": "BuiltinCommonInstructions::Group",
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::ForEach",
+                      "object": "Flower",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarObjet"
+                          },
+                          "parameters": [
+                            "Flower",
+                            "Lives",
+                            ">",
+                            "0"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "ModVarScene"
+                          },
+                          "parameters": [
+                            "Lose",
+                            "=",
+                            "0"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    },
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarScene"
+                          },
+                          "parameters": [
+                            "Lose",
+                            "=",
+                            "1"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "PushScene"
+                          },
+                          "parameters": [
+                            "",
+                            "\"Lose\""
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "events": []
+                    }
+                  ],
+                  "parameters": []
+                },
+                {
+                  "colorB": 228,
+                  "colorG": 176,
+                  "colorR": 74,
+                  "creationTime": 0,
+                  "disabled": false,
+                  "folded": false,
+                  "name": "Win",
+                  "source": "",
+                  "type": "BuiltinCommonInstructions::Group",
+                  "events": [
+                    {
+                      "disabled": false,
+                      "folded": false,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "VarScene"
+                          },
+                          "parameters": [
+                            "ActualWave",
+                            "=",
+                            "3"
+                          ],
+                          "subInstructions": []
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": false,
+                          "folded": false,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "NbObjet"
+                              },
+                              "parameters": [
+                                "Enemy",
+                                "=",
+                                "0"
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "inverted": false,
+                                "value": "PushScene"
+                              },
+                              "parameters": [
+                                "",
+                                "\"Win\""
+                              ],
+                              "subInstructions": []
+                            }
+                          ],
+                          "events": []
+                        }
+                      ]
+                    }
+                  ],
+                  "parameters": []
+                }
+              ]
+            }
+          ],
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "associatedLayout": "Game",
+      "lastChangeTimeStamp": 0,
+      "name": "FlowerManagement",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "TextObject::String"
+              },
+              "parameters": [
+                "FlowerLive",
+                "=",
+                "Flower.VariableString(Lives)"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
         }
       ]
     }
@@ -3238,6 +4709,33 @@
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "Ant",
+                    "Variable(PositionX)",
+                    "550",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Ant",
+                    "Target",
+                    "=",
+                    "1"
+                  ],
+                  "subInstructions": []
+                },
                 {
                   "type": {
                     "inverted": false,
@@ -3273,7 +4771,20 @@
                     "Ant",
                     "MaxSpeed",
                     "=",
-                    "Enemy.Variable(Speed) + (Enemy.Variable(Speed) * GlobalVariable(Nivel) / 100)"
+                    "Ant.Variable(Speed) + (10 * Ant.Variable(Speed) / 100) + (Ant.Variable(Speed) * (GlobalVariable(Nivel) * Variable(ActualWave)) / 100)"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Ant",
+                    "Lives",
+                    "=",
+                    "Ant.Variable(Lives) + (Ant.Variable(Lives) * (2 * (GlobalVariable(Nivel) * Variable(ActualWave)))/ 100)"
                   ],
                   "subInstructions": []
                 }
@@ -3309,7 +4820,7 @@
           "fullName": "Setup Enemies",
           "functionType": "Action",
           "name": "SetUpEnemies",
-          "sentence": "SetUpEnemies(_PARAM1_, _PARAM2_, _PARAM3_)",
+          "sentence": "SetUpEnemies(_PARAM1_, _PARAM2_, _PARAM3_, _PARAM4_)",
           "events": [
             {
               "disabled": false,
@@ -3357,6 +4868,18 @@
                     "0"
                   ],
                   "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ChangePlan"
+                  },
+                  "parameters": [
+                    "Enemy",
+                    "=",
+                    "1"
+                  ],
+                  "subInstructions": []
                 }
               ],
               "events": [
@@ -3390,6 +4913,41 @@
                         "",
                         "Enemy",
                         "Flower"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                },
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "Create"
+                      },
+                      "parameters": [
+                        "",
+                        "EnemyLive",
+                        "",
+                        "",
+                        ""
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "LinkedObjects::LinkObjects"
+                      },
+                      "parameters": [
+                        "",
+                        "Enemy",
+                        "EnemyLive"
                       ],
                       "subInstructions": []
                     }
@@ -3429,6 +4987,16 @@
               "optional": false,
               "supplementaryInformation": "Sprite",
               "type": "objectList"
+            },
+            {
+              "codeOnly": false,
+              "defaultValue": "",
+              "description": "EnemyLive",
+              "longDescription": "",
+              "name": "EnemyLive",
+              "optional": false,
+              "supplementaryInformation": "TextObject::Text",
+              "type": "objectList"
             }
           ],
           "objectGroups": []
@@ -3450,8 +5018,8 @@
           "locked": false,
           "name": "Floor",
           "persistentUuid": "0fcb994d-ad16-4a2b-a1d8-5910799879cb",
-          "width": 2400,
-          "x": -500,
+          "width": 1280,
+          "x": 0,
           "y": 570,
           "zOrder": 1,
           "numberProperties": [],
@@ -3469,7 +5037,7 @@
           "width": 0,
           "x": 608,
           "y": 506,
-          "zOrder": 1,
+          "zOrder": 0,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": [
@@ -3482,7 +5050,7 @@
         {
           "angle": 0,
           "customSize": true,
-          "height": 548,
+          "height": 485,
           "layer": "",
           "locked": false,
           "name": "Wall",
@@ -3498,18 +5066,2901 @@
         {
           "angle": 0,
           "customSize": true,
-          "height": 537,
+          "height": 467,
           "layer": "",
           "locked": false,
           "name": "Wall",
           "persistentUuid": "d49f4af0-f1bd-4978-a142-5a18aa0061ec",
           "width": 64,
-          "x": 1280,
-          "y": -17,
+          "x": 1281,
+          "y": 2,
           "zOrder": 2,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 10,
+          "layer": "",
+          "locked": false,
+          "name": "Floor",
+          "persistentUuid": "155d6858-a20b-4ca4-abec-32b3c3ec3eda",
+          "width": 5000,
+          "x": 1280,
+          "y": 570,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 10,
+          "layer": "",
+          "locked": false,
+          "name": "Floor",
+          "persistentUuid": "325b8a04-3f13-49d9-a68a-f2933527fcd0",
+          "width": 5000,
+          "x": -5000,
+          "y": 570,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "b621209b-d100-4b5d-9751-32c0ace42f38",
+          "width": 0,
+          "x": 1430,
+          "y": 538,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "3"
+            },
+            {
+              "name": "Nivel",
+              "value": "1"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "300"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "1430"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "a3bc1966-b041-4a87-897e-af2bef6ff482",
+          "width": 0,
+          "x": -150,
+          "y": 538,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "3"
+            },
+            {
+              "name": "Nivel",
+              "value": "1"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "300"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-150"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "f0a574e6-daaa-4de5-84a6-74f9b8f96948",
+          "width": 0,
+          "x": -200,
+          "y": 538,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "5"
+            },
+            {
+              "name": "Nivel",
+              "value": "1"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "250"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-1000"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "a13bc02c-0f5d-456d-8937-9864ce02063e",
+          "width": 0,
+          "x": 1500,
+          "y": 538,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "5"
+            },
+            {
+              "name": "Nivel",
+              "value": "1"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "250"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "2300"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "69c1aaba-4283-4c97-8cff-12b3a09bf3ac",
+          "width": 0,
+          "x": -250,
+          "y": 538,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "7"
+            },
+            {
+              "name": "Nivel",
+              "value": "1"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-2200"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "30f70499-bc31-4786-93d0-e71137796eca",
+          "width": 0,
+          "x": 1550,
+          "y": 538,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "7"
+            },
+            {
+              "name": "Nivel",
+              "value": "1"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "3500"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "FlowerLive",
+          "persistentUuid": "e2276dd8-2086-44bc-8752-543bc78e5245",
+          "width": 0,
+          "x": 610,
+          "y": 583,
+          "zOrder": 5,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "25ad6075-345e-48e8-a0fb-c3e3571c7a61",
+          "width": 0,
+          "x": -250,
+          "y": 489,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "9"
+            },
+            {
+              "name": "Nivel",
+              "value": "2"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-2800"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "38d8f3cc-d076-459d-b9c3-999c8049b77a",
+          "width": 0,
+          "x": -198,
+          "y": 491,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "7"
+            },
+            {
+              "name": "Nivel",
+              "value": "2"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-1400"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "9e5e029c-8d0a-4e96-a930-24a5ec74f961",
+          "width": 0,
+          "x": -149,
+          "y": 491,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "5"
+            },
+            {
+              "name": "Nivel",
+              "value": "2"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "250"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-150"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "5221dd8a-f1df-4688-a01c-ec91d58b4ff9",
+          "width": 0,
+          "x": 1431,
+          "y": 489,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "5"
+            },
+            {
+              "name": "Nivel",
+              "value": "2"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "250"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "1430"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "c3809ae1-6bfb-44b9-b448-5a2219559665",
+          "width": 0,
+          "x": 1498,
+          "y": 486,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "7"
+            },
+            {
+              "name": "Nivel",
+              "value": "2"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "2600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "2182df5c-e2a4-46eb-b9da-f92673c0f9a2",
+          "width": 0,
+          "x": 1551,
+          "y": 486,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "9"
+            },
+            {
+              "name": "Nivel",
+              "value": "2"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "4000"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "8cfc5d6c-1755-405e-af94-3dc6b158c61f",
+          "width": 0,
+          "x": 1498,
+          "y": 430,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "9"
+            },
+            {
+              "name": "Nivel",
+              "value": "3"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "3100"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "4b719fe1-c524-405b-86ed-46e23e82451e",
+          "width": 0,
+          "x": 1552,
+          "y": 433,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "11"
+            },
+            {
+              "name": "Nivel",
+              "value": "3"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "4900"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "257aef44-c036-4ba8-b53b-2ec5dffe5ee1",
+          "width": 0,
+          "x": 1435,
+          "y": 432,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "7"
+            },
+            {
+              "name": "Nivel",
+              "value": "3"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "250"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "1430"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "a3264346-656f-4a0f-a7ce-591f0f2a9a4c",
+          "width": 0,
+          "x": 1430,
+          "y": 364,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "9"
+            },
+            {
+              "name": "Nivel",
+              "value": "4"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "250"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "1430"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "ccb4aa08-a8fc-41b5-8a0f-49b700368f0d",
+          "width": 0,
+          "x": 1496,
+          "y": 365,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "11"
+            },
+            {
+              "name": "Nivel",
+              "value": "4"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "3600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "fe242dd3-53df-45c3-a7f9-e683f8f15606",
+          "width": 0,
+          "x": 1548,
+          "y": 370,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "13"
+            },
+            {
+              "name": "Nivel",
+              "value": "4"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "5800"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "80b2a831-696d-4a53-b00e-ecc82f841588",
+          "width": 0,
+          "x": -250,
+          "y": 438,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "11"
+            },
+            {
+              "name": "Nivel",
+              "value": "3"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-3700"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "1a634e27-d338-496f-828e-bca7b60069e7",
+          "width": 0,
+          "x": -197,
+          "y": 436,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "9"
+            },
+            {
+              "name": "Nivel",
+              "value": "3"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-1900"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "60b38cf3-4074-45ac-b912-4aafaed2c18b",
+          "width": 0,
+          "x": -152,
+          "y": 436,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "7"
+            },
+            {
+              "name": "Nivel",
+              "value": "3"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "250"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-150"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "5e2dc840-558c-404c-8ae2-e1e3b63095d2",
+          "width": 0,
+          "x": -148,
+          "y": 381,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "9"
+            },
+            {
+              "name": "Nivel",
+              "value": "4"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "250"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-150"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "978848a1-87c7-42fc-aa00-86c8308657a3",
+          "width": 0,
+          "x": -198,
+          "y": 379,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "11"
+            },
+            {
+              "name": "Nivel",
+              "value": "4"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-2400"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "72fa4cad-a3f9-49e4-a1df-e760ee2e9ad8",
+          "width": 0,
+          "x": -250,
+          "y": 379,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "13"
+            },
+            {
+              "name": "Nivel",
+              "value": "4"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-4600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "298f4d87-af1b-4c37-abd4-ae0f28dc98a5",
+          "width": 0,
+          "x": 1548,
+          "y": 370,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "13"
+            },
+            {
+              "name": "Nivel",
+              "value": "4"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "5800"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "6b234400-3f16-42d0-ac0a-e0ff1c76cf2b",
+          "width": 0,
+          "x": 1548,
+          "y": 370,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "13"
+            },
+            {
+              "name": "Nivel",
+              "value": "4"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "5800"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "f46024ef-9edb-4b9d-8a71-ded8c45e8ea9",
+          "width": 0,
+          "x": 1426,
+          "y": 303,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "11"
+            },
+            {
+              "name": "Nivel",
+              "value": "5"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "1430"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "02749da0-4972-462a-ad5e-79885e5fb697",
+          "width": 0,
+          "x": 1493,
+          "y": 307,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "13"
+            },
+            {
+              "name": "Nivel",
+              "value": "5"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "3600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "08984c96-fbb4-47f7-9216-2d2dd35b0106",
+          "width": 0,
+          "x": 1555,
+          "y": 307,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "15"
+            },
+            {
+              "name": "Nivel",
+              "value": "5"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "100"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "5800"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "dae25a14-37a9-469a-bc51-ecaf4554d6ce",
+          "width": 0,
+          "x": -252,
+          "y": 325,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "15"
+            },
+            {
+              "name": "Nivel",
+              "value": "5"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "100"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-4600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "0f899f67-f166-432a-a44f-4176928a86bd",
+          "width": 0,
+          "x": -198,
+          "y": 324,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "13"
+            },
+            {
+              "name": "Nivel",
+              "value": "5"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-2400"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "c24a1591-877f-4400-8077-335736bb1cf2",
+          "width": 0,
+          "x": -148,
+          "y": 322,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "11"
+            },
+            {
+              "name": "Nivel",
+              "value": "5"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-150"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "d1bf5806-165c-4f47-a539-8944a4b39bea",
+          "width": 0,
+          "x": 1429,
+          "y": 249,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "13"
+            },
+            {
+              "name": "Nivel",
+              "value": "6"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "1430"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "713ac73d-d5f5-4795-a14b-8adad713b3c7",
+          "width": 0,
+          "x": 1493,
+          "y": 250,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "15"
+            },
+            {
+              "name": "Nivel",
+              "value": "6"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "3600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "61fb97ec-4e17-4dfe-be9c-36d6eae66a5d",
+          "width": 0,
+          "x": 1550,
+          "y": 251,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "17"
+            },
+            {
+              "name": "Nivel",
+              "value": "6"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "100"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "5800"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "19225638-5297-4ce8-9cc8-817ac01843b8",
+          "width": 0,
+          "x": -251,
+          "y": 276,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "17"
+            },
+            {
+              "name": "Nivel",
+              "value": "6"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "100"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-4600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "7f003d92-b2ff-4daf-86aa-30fb863d01b1",
+          "width": 0,
+          "x": -198,
+          "y": 276,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "15"
+            },
+            {
+              "name": "Nivel",
+              "value": "6"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-2400"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "0a85af85-2b36-480a-8789-cc7c3a60b4bd",
+          "width": 0,
+          "x": -148,
+          "y": 278,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "13"
+            },
+            {
+              "name": "Nivel",
+              "value": "6"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-150"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "a42a57d0-18be-456d-b43e-a7de189c1852",
+          "width": 0,
+          "x": -149,
+          "y": 217,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "15"
+            },
+            {
+              "name": "Nivel",
+              "value": "7"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-150"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "8814d2ed-3e3a-4881-87e3-5e8e69d2c7c2",
+          "width": 0,
+          "x": -202,
+          "y": 211,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "17"
+            },
+            {
+              "name": "Nivel",
+              "value": "7"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-2400"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "d872e365-24f5-4710-9a3f-641ec7b98f05",
+          "width": 0,
+          "x": -256,
+          "y": 213,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "19"
+            },
+            {
+              "name": "Nivel",
+              "value": "7"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "100"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-4600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "5ed26bbe-2c52-4211-9d7e-8d771bc561d3",
+          "width": 0,
+          "x": 1429,
+          "y": 249,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "13"
+            },
+            {
+              "name": "Nivel",
+              "value": "6"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "1430"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "17f7c586-33a5-479e-a038-867f5ee94100",
+          "width": 0,
+          "x": 1429,
+          "y": 201,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "15"
+            },
+            {
+              "name": "Nivel",
+              "value": "7"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "200"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "1430"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "bdc0e615-05ad-4fb5-9fc4-38929be1bd07",
+          "width": 0,
+          "x": 1493,
+          "y": 202,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "17"
+            },
+            {
+              "name": "Nivel",
+              "value": "7"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "3600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "789e1368-f985-4b5e-b23f-2942a41c67bd",
+          "width": 0,
+          "x": 1550,
+          "y": 202,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "19"
+            },
+            {
+              "name": "Nivel",
+              "value": "7"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "100"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "5800"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "1c299c79-f846-43be-a215-6a7b989abbad",
+          "width": 0,
+          "x": 1550,
+          "y": 151,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "21"
+            },
+            {
+              "name": "Nivel",
+              "value": "8"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "5800"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "3422bc78-681f-48e7-a13b-a14ef65df204",
+          "width": 0,
+          "x": 1493,
+          "y": 152,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "19"
+            },
+            {
+              "name": "Nivel",
+              "value": "8"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "100"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "3600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "62b37c66-9640-4c7a-b159-5012a094dcfe",
+          "width": 0,
+          "x": 1427,
+          "y": 149,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "17"
+            },
+            {
+              "name": "Nivel",
+              "value": "8"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "1430"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "654668df-79ff-4227-84ae-100b3f266a5a",
+          "width": 0,
+          "x": -200,
+          "y": 163,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "19"
+            },
+            {
+              "name": "Nivel",
+              "value": "8"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "100"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-2400"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "2fc90850-0a9e-404f-afa9-666787cd4114",
+          "width": 0,
+          "x": -257,
+          "y": 159,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "21"
+            },
+            {
+              "name": "Nivel",
+              "value": "8"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-4600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "6c076e82-a84a-447e-ac8d-a61cf430ed04",
+          "width": 0,
+          "x": -146,
+          "y": 162,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "17"
+            },
+            {
+              "name": "Nivel",
+              "value": "8"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-150"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "52afc15a-c29c-49ee-8ced-ebafb9fae820",
+          "width": 0,
+          "x": -150,
+          "y": 109,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "19"
+            },
+            {
+              "name": "Nivel",
+              "value": "9"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-150"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "17d5cc49-83f6-40c2-98fd-b158f4fb3c31",
+          "width": 0,
+          "x": -202,
+          "y": 108,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "21"
+            },
+            {
+              "name": "Nivel",
+              "value": "9"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "100"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-2400"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "d6c9f9f8-4a10-42f1-8fc6-1a83540acc2f",
+          "width": 0,
+          "x": -257,
+          "y": 105,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "23"
+            },
+            {
+              "name": "Nivel",
+              "value": "9"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-4600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "69c1585d-99d2-458c-8c25-524fb1f54827",
+          "width": 0,
+          "x": -149,
+          "y": 62,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "21"
+            },
+            {
+              "name": "Nivel",
+              "value": "10"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "100"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-150"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "0d8c03c3-975c-4588-aaa2-9d331a5eb4ac",
+          "width": 0,
+          "x": -202,
+          "y": 60,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "23"
+            },
+            {
+              "name": "Nivel",
+              "value": "10"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "75"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "100"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-2400"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "9a5835ff-ef5b-45db-9a2c-1fc99195eff3",
+          "width": 0,
+          "x": -257,
+          "y": 58,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "25"
+            },
+            {
+              "name": "Nivel",
+              "value": "10"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "-4600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "e7e6c3ae-11a4-4630-8d17-fcb056f8d03f",
+          "width": 0,
+          "x": 1427,
+          "y": 99,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "19"
+            },
+            {
+              "name": "Nivel",
+              "value": "9"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "150"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "1430"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "e33a9c16-a5fa-470c-b344-73d0fcb4aa11",
+          "width": 0,
+          "x": 1493,
+          "y": 101,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "21"
+            },
+            {
+              "name": "Nivel",
+              "value": "9"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "100"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "3600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "cf998276-a2c4-48bc-ba79-20024fdec9d8",
+          "width": 0,
+          "x": 1550,
+          "y": 101,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "23"
+            },
+            {
+              "name": "Nivel",
+              "value": "9"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "5800"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "80857090-bc53-45ad-8bf7-abda0516bc43",
+          "width": 0,
+          "x": 1428,
+          "y": 43,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "21"
+            },
+            {
+              "name": "Nivel",
+              "value": "10"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "100"
+            },
+            {
+              "name": "Wave",
+              "value": "1"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "1430"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "758583e1-5fd0-499a-9317-069edf71c12f",
+          "width": 0,
+          "x": 1495,
+          "y": 43,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "23"
+            },
+            {
+              "name": "Nivel",
+              "value": "10"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "75"
+            },
+            {
+              "name": "Wave",
+              "value": "2"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "3600"
+            }
+          ]
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "Wave",
+          "persistentUuid": "e1bf6b3a-f6ab-4068-bd89-048ac8ad27eb",
+          "width": 0,
+          "x": 1549,
+          "y": 43,
+          "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": [
+            {
+              "name": "Type",
+              "value": "1"
+            },
+            {
+              "name": "Quantity",
+              "value": "25"
+            },
+            {
+              "name": "Nivel",
+              "value": "10"
+            },
+            {
+              "name": "RandomSpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "SpaceBetween",
+              "value": "50"
+            },
+            {
+              "name": "Wave",
+              "value": "3"
+            },
+            {
+              "name": "InitialPosition",
+              "value": "5800"
+            }
+          ]
         }
       ],
       "editionSettings": {
@@ -3523,7 +7974,7 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 0.5
+        "zoomFactor": 1
       }
     },
     {
